@@ -1,6 +1,7 @@
 #pragma once
 
 #define API_VERSION		0x01
+#define SITE_URL		"http://apitest.jkhub.org/api"
 
 typedef struct {
 	void	(*Print)			( const char *msg, ... );

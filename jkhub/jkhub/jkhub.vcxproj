@@ -67,6 +67,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="api_achievements.cpp" />
+    <ClCompile Include="api_apilist.cpp" />
     <ClCompile Include="api_connection.cpp" />
     <ClCompile Include="api_main.cpp" />
   </ItemGroup>
