@@ -11,3 +11,12 @@
 *.lai
 *.la
 *.a
+
+*.dll
+*.opensdf
+*.sdf
+*.user
+
+jkhub/ipch/*
+jkhub/Debug/*
+jkhub/jkhub/Debug/*
