@@ -5,12 +5,14 @@ using namespace std;
 string sessionHash = "";			// used for this particular game session
 string userSessionHash = "";		// used for the logged in user
 
-void ConnectionManager::Connect( int modId, const char *guid ) {
+CURL* ConnectionManager::ptConnection = NULL;
+
+bool ConnectionManager::Connect( int modId, const char *guid ) {
 	// sets up the initial connection to the game
 	ptConnection = curl_easy_init();
 	if(!ptConnection) {
 		ai->Error(0, "Could not init cURL");
-		return;
+		return false;
 	}
 
 	// set url
@@ -24,6 +26,9 @@ void ConnectionManager::Connect( int modId, const char *guid ) {
 
 	// now actually do it
 	sessionHash = Perform();
+	if(sessionHash != "0")
+		return true;
+	return false;
 }
 
 void ConnectionManager::Disconnect( ) {
@@ -50,6 +55,10 @@ void ConnectionManager::Logout( ) {
 void ConnectionManager::URL( string url ) {
 	curl_easy_setopt(ptConnection, CURLOPT_URL, url.c_str()); // set the URL
 	curl_easy_setopt(ptConnection, CURLOPT_FOLLOWLOCATION, 1L); // make sure we follow any sorta redirects (not foreseen but possible)
+}
+
+void ConnectionManager::Post( string postData ) {
+	curl_easy_setopt(ptConnection, CURLOPT_POSTFIELDS, postData.c_str());
 }
 
 string ConnectionManager::Perform( void ) {

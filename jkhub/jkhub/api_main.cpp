@@ -19,3 +19,10 @@ __declspec(dllexport) int GetModuleAPI(apiImport_t *apiIn, apiExport_t *apiOut) 
 
 	return API_VERSION;
 }
+
+#ifdef WIN32
+BOOL WINAPI DllMain(HINSTANCE hInDLL, DWORD fdwReason, LPVOID lpvReserved) {
+	// not used
+	return 1;
+}
+#endif

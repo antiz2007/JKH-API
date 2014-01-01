@@ -12,7 +12,7 @@ typedef struct {
 } apiImport_t;
 
 typedef struct {
-	void	(*Connect)			( int modId, const char *hash );
+	bool	(*Connect)			( int modId, const char *hash );
 	void	(*Disconnect)		( void );
 	bool	(*Login)			( char *plaintextUser, char *plaintextPassword );
 	void	(*Logout)			( void );
@@ -28,4 +28,5 @@ typedef struct {
 #pragma comment(lib, "..\\libraries\\libcurl\\lib\\libeay32.lib")
 #pragma comment(lib, "..\\libraries\\libcurl\\lib\\openldap.lib")
 #pragma comment(lib, "..\\libraries\\libcurl\\lib\\ssleay32.lib")
+#pragma warning(disable: 4099)
 #endif

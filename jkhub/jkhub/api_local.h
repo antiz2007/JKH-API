@@ -13,7 +13,7 @@ typedef std::pair<std::string, std::string>		postArg_t;
 class ConnectionManager {
 public:
 	// -- Methods -- //
-	static void Connect( int modId, const char *guid );
+	static bool Connect( int modId, const char *guid );
 	static void Disconnect( void );
 	static bool Login( char *plaintextUser, char *plaintextPassword );
 	static void Logout( void );
